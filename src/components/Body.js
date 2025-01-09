@@ -17,9 +17,7 @@ const Body = ()=>{
 
     const fetchData = async ()=>{
         const response =await axios.get("https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.50330&lng=80.64650");
-        console.log(response)
         const dataJson =response.data
-        console.log(dataJson)
         setResData(dataJson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredData(dataJson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
@@ -31,13 +29,13 @@ const Body = ()=>{
     
     return (
     <div className="body p-2">
+        {console.log(resData)}
         <div className="flex justify-between">
             <div>
-                <input className="border border-gray-600 m-2" value={searchData} onChange={(e)=>{
+                <input data-testid="searchInput" className="border border-gray-600 m-2" value={searchData} onChange={(e)=>{
                     setSearchData(e.target.value);
                 }}/>
                 <button className="border bg-gray-300 px-2 rounded-sm" onClick={()=>{
-                    //console.log(resData[0].info.name.toLowerCase());
                     setFilteredData(resData?.filter(res=>res?.info?.name?.toLowerCase()?.includes(searchData?.toLowerCase())));
                 }}>search</button>
             </div>
