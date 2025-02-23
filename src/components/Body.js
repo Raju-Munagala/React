@@ -40,7 +40,7 @@ const Body = ()=>{
                 }}>search</button>
             </div>
             <button className="border bg-gray-300 p-2 rounded-sm" onClick={()=>
-                setFilteredData(resData?.filter(restaurant=>restaurant?.info?.avgRating>4))
+                setFilteredData(resData?.filter(restaurant=>restaurant?.info?.avgRating>4.2))
             }>
                 top rated restaurants
             </button>
